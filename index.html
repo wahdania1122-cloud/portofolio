@@ -1,0 +1,1287 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portofolio pribadi, keahlian, dan proyek pengembangan web.">
+  <title>Portfolio | Creative Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --surface: #141414;
+      --gold: #d6b46a;
+      --gold-light: #f1dca1;
+      --text: #f5f2eb;
+      --muted: #a6a39b;
+      --border: rgba(214,180,106,.2);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea {
+      font: inherit;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    .gold { color: var(--gold); }
+
+    .section {
+      padding: 100px 0;
+      scroll-margin-top: 80px;
+    }
+
+    .section-label {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 580px;
+    }
+
+    .section-heading {
+      margin-bottom: 45px;
+    }
+
+    /* NAVBAR */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(11,11,11,.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: #c8c5be;
+      transition: .3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-contact {
+      padding: 10px 17px;
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      border-radius: 3px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      color: var(--gold);
+      border: 0;
+      font-size: 23px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 125px 0 75px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 85% 45%, rgba(145,106,43,.13), transparent 38%),
+        linear-gradient(130deg, #0b0b0b 55%, #17130d);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border: 1px solid rgba(214,180,106,.1);
+      border-radius: 50%;
+      right: -160px;
+      top: 20%;
+      box-shadow: 0 0 0 50px rgba(214,180,106,.025),
+                  0 0 0 100px rgba(214,180,106,.018);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 70px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(43px, 6.3vw, 76px);
+      line-height: 1.12;
+      font-weight: 500;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 em {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .hero-text {
+      max-width: 500px;
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 22px;
+      border: 1px solid var(--gold);
+      border-radius: 3px;
+      font-size: 13px;
+      transition: .3s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #111;
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-3px);
+    }
+
+    .btn-outline { color: var(--gold); }
+
+    .btn-outline:hover {
+      background: rgba(214,180,106,.1);
+      transform: translateY(-3px);
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .portrait-frame {
+      width: min(100%, 365px);
+      aspect-ratio: 4 / 5;
+      border: 1px solid rgba(214,180,106,.55);
+      padding: 12px;
+      position: relative;
+    }
+
+    .portrait-frame::before {
+      content: "";
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      width: 80px;
+      height: 80px;
+      border-top: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+    }
+
+    .portrait {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(.72);
+      background: #242019;
+    }
+
+    .portrait-caption {
+      position: absolute;
+      left: -28px;
+      bottom: 35px;
+      padding: 17px 22px;
+      background: #171510;
+      border: 1px solid var(--border);
+    }
+
+    .portrait-caption strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      color: var(--gold);
+      font-size: 19px;
+    }
+
+    .portrait-caption span {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .scroll-note {
+      margin-top: 65px;
+      color: #79766e;
+      font-size: 10px;
+      letter-spacing: 3px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      align-items: center;
+      gap: 75px;
+    }
+
+    .about-card {
+      padding: 35px;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, #171612, #101010);
+      position: relative;
+    }
+
+    .about-card .quote-icon {
+      font-family: Georgia, serif;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--gold);
+    }
+
+    .about-card p {
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      line-height: 1.6;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .about-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 17px;
+      margin: 28px 0;
+    }
+
+    .detail {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .detail small {
+      color: var(--muted);
+      display: block;
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+
+    .detail strong {
+      font-size: 13px;
+      font-weight: 500;
+      overflow-wrap: anywhere;
+    }
+
+    /* SKILLS */
+    .skills-section { background: #101010; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 17px;
+    }
+
+    .skill-card {
+      border: 1px solid #27251f;
+      padding: 27px 22px;
+      background: #141414;
+      transition: .3s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-6px);
+    }
+
+    .skill-icon {
+      font-size: 26px;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .skill-card h3 {
+      font-size: 15px;
+      margin-bottom: 9px;
+    }
+
+    .skill-card p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .skill-level {
+      height: 2px;
+      background: #333;
+      margin-top: 22px;
+    }
+
+    .skill-level span {
+      height: 100%;
+      display: block;
+      background: var(--gold);
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid #28251e;
+      overflow: hidden;
+      transition: .35s;
+    }
+
+    .project-card:hover {
+      border-color: rgba(214,180,106,.7);
+      transform: translateY(-5px);
+    }
+
+    .project-image {
+      height: 255px;
+      position: relative;
+      overflow: hidden;
+      background: #1c1b18;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: .5s;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
+    }
+
+    .project-number {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(10,10,10,.8);
+      color: var(--gold);
+      padding: 6px 11px;
+      font-size: 11px;
+    }
+
+    .project-content { padding: 25px; }
+
+    .project-content h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 19px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tags span {
+      color: var(--gold-light);
+      border: 1px solid var(--border);
+      padding: 4px 9px;
+      font-size: 10px;
+    }
+
+    .project-link {
+      color: var(--gold);
+      font-size: 12px;
+    }
+
+    .project-link i { margin-left: 6px; }
+
+    /* EXPERIENCE */
+    .experience-section { background: #101010; }
+
+    .timeline {
+      max-width: 760px;
+      border-left: 1px solid var(--gold);
+      margin-left: 8px;
+      padding-left: 30px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 35px;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -36px;
+      top: 8px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(214,180,106,.1);
+    }
+
+    .timeline-item small {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .timeline-item h3 {
+      margin: 7px 0;
+      font-size: 18px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 70px;
+    }
+
+    .contact-info > p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 18px 0 28px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .contact-item > i {
+      color: var(--gold);
+      border: 1px solid var(--border);
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+    }
+
+    .contact-item small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .contact-item strong {
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .socials a {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      color: var(--gold);
+      transition: .3s;
+    }
+
+    .socials a:hover {
+      background: var(--gold);
+      color: #111;
+    }
+
+    .contact-form {
+      padding: 30px;
+      border: 1px solid #28251e;
+      background: #121212;
+    }
+
+    .form-group { margin-bottom: 18px; }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px 14px;
+      color: var(--text);
+      background: #0b0b0b;
+      border: 1px solid #302d26;
+      outline: none;
+      border-radius: 2px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group textarea {
+      min-height: 125px;
+      resize: vertical;
+    }
+
+    .contact-form .btn { width: 100%; }
+
+    /* FOOTER */
+    footer {
+      padding: 27px 0;
+      border-top: 1px solid #26231d;
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    footer span { color: var(--gold); }
+
+    /* ANIMATION */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* TABLET */
+    @media (max-width: 900px) {
+      .hero-grid { gap: 35px; }
+      .about-grid, .contact-grid { gap: 35px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { gap: 16px; }
+    }
+
+    /* MOBILE */
+    @media (max-width: 680px) {
+      .section { padding: 75px 0; }
+
+      nav { min-height: 68px; }
+
+      .menu-toggle { display: block; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        padding: 22px 5%;
+        background: #111;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links li a {
+        display: block;
+        padding: 12px 0;
+      }
+
+      .nav-contact {
+        border: 0;
+        padding-left: 0;
+      }
+
+      .hero { min-height: auto; }
+
+      .hero-grid, .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid { gap: 45px; }
+
+      .hero h1 { font-size: clamp(40px, 12vw, 58px); }
+
+      .hero-visual { max-width: 330px; margin: auto; width: 100%; }
+
+      .portrait-caption { left: -8px; }
+
+      .scroll-note { margin-top: 35px; }
+
+      .about-grid { gap: 35px; }
+
+      .about-card { padding: 25px; }
+
+      .about-card p { font-size: 21px; }
+
+      .skills-grid { gap: 12px; }
+
+      .skill-card { padding: 20px 15px; }
+
+      .projects-grid { grid-template-columns: 1fr; }
+
+      .project-image { height: 220px; }
+
+      .contact-grid { gap: 35px; }
+
+      .contact-form { padding: 20px; }
+
+      .section-title { font-size: 35px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="container">
+      <a href="#home" class="logo">PORTO<span>.</span></a>
+
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Buka navigasi" aria-expanded="false"
+        aria-controls="navLinks">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#skills">Keahlian</a></li>
+        <li><a href="#projects">Proyek</a></li>
+        <li><a href="#experience">Pengalaman</a></li>
+        <li><a href="#contact" class="nav-contact">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <p class="eyebrow">Welcome to my portfolio</p>
+
+          <h1>
+            Creating Digital
+            <em>Experiences.</em>
+          </h1>
+
+          <p class="hero-text">
+            Halo, saya <strong class="gold">Nama Kamu</strong>.
+            Seorang mahasiswa dan calon web developer yang tertarik
+            membangun website modern, fungsional, dan memiliki tampilan
+            visual yang elegan.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">
+              Lihat Proyek <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              Hubungi Saya
+            </a>
+          </div>
+
+          <div class="scroll-note">
+            SCROLL TO EXPLORE &nbsp; ↓
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="portrait-frame">
+            <!-- Ganti URL foto di bawah dengan foto kamu -->
+            <img class="portrait"
+              src="JENNIE.JPG"
+              alt="Foto profil portofolio"
+              onerror="this.style.display='none'">
+
+            <div class="portrait-caption">
+              <strong>Creative Mind.</strong>
+              <span>Design · Develop · Inspire</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-card reveal">
+          <div class="quote-icon">“</div>
+          <p>
+            Turning ideas into
+            <span class="gold">meaningful digital</span>
+            experiences.
+          </p>
+        </div>
+
+        <div class="about-content reveal">
+          <div class="section-label">01 — About Me</div>
+          <h2 class="section-title">
+            Mengenal Saya <span class="gold">Lebih Dekat</span>
+          </h2>
+
+          <p>
+            Saya adalah seseorang yang memiliki ketertarikan pada
+            teknologi informasi, desain antarmuka, dan pengembangan
+            website. Saya senang mempelajari hal baru serta mengubah
+            ide menjadi karya digital yang bermanfaat.
+          </p>
+
+          <p>
+            Bagi saya, website yang baik tidak hanya menarik secara
+            visual, tetapi juga mudah digunakan, responsif di berbagai
+            perangkat, dan mampu memberikan solusi bagi penggunanya.
+          </p>
+
+          <div class="about-details">
+            <div class="detail">
+              <small>Nama</small>
+              <strong>Nama Kamu</strong>
+            </div>
+            <div class="detail">
+              <small>Profesi</small>
+              <strong>Mahasiswa / Web Developer</strong>
+            </div>
+            <div class="detail">
+              <small>Domisili</small>
+              <strong>Kota Kamu, Indonesia</strong>
+            </div>
+            <div class="detail">
+              <small>Fokus</small>
+              <strong>Web & UI Design</strong>
+            </div>
+          </div>
+
+          <a href="#contact" class="btn btn-outline">
+            Mari Berkolaborasi
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-label">02 — My Expertise</div>
+          <h2 class="section-title">
+            Keahlian <span class="gold">Saya</span>
+          </h2>
+          <p class="section-desc">
+            Teknologi dan kemampuan yang saya pelajari untuk
+            menciptakan solusi digital yang berkualitas.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
+            <h3>HTML5</h3>
+            <p>Menyusun struktur website yang terorganisasi dan semantik.</p>
+            <div class="skill-level"><span style="width:85%"></span></div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon"><i class="fa-brands fa-css3-alt"></i></div>
+            <h3>CSS3</h3>
+            <p>Membangun desain responsif dengan layout dan animasi.</p>
+            <div class="skill-level"><span style="width:80%"></span></div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon"><i class="fa-brands fa-js"></i></div>
+            <h3>JavaScript</h3>
+            <p>Membuat interaksi dan fitur website yang dinamis.</p>
+            <div class="skill-level"><span style="width:65%"></span></div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon"><i class="fa-brands fa-figma"></i></div>
+            <h3>UI / UX Design</h3>
+            <p>Merancang antarmuka yang konsisten dan mudah dipahami.</p>
+            <div class="skill-level"><span style="width:75%"></span></div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon"><i class="fa-brands fa-php"></i></div>
+            <h3>PHP</h3>
+            <p>Mempelajari pengembangan aplikasi dari sisi server.</p>
+            <div class="skill-level"><span style="width:55%"></span></div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
+            <h3>Database</h3>
+            <p>Mengelola data menggunakan konsep basis data SQL.</p>
+            <div class="skill-level"><span style="width:60%"></span></div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon"><i class="fa-brands fa-wordpress"></i></div>
+            <h3>WordPress</h3>
+            <p>Membuat dan mengatur website menggunakan CMS.</p>
+            <div class="skill-level"><span style="width:75%"></span></div>
+          </article>
+
+          <article class="skill-card reveal">
+            <div class="skill-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+            <h3>Responsive Design</h3>
+            <p>Menyesuaikan tampilan untuk desktop, tablet, dan ponsel.</p>
+            <div class="skill-level"><span style="width:80%"></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-label">03 — Selected Works</div>
+          <h2 class="section-title">
+            Proyek <span class="gold">Pilihan</span>
+          </h2>
+          <p class="section-desc">
+            Beberapa contoh proyek yang dapat dikembangkan menjadi
+            portofolio pribadi. Ganti dengan proyek asli kamu.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=85"
+                alt="Tampilan dashboard website"
+                loading="lazy">
+              <span class="project-number">PROJECT 01</span>
+            </div>
+            <div class="project-content">
+              <h3>Website Marketplace</h3>
+              <p>
+                Konsep platform jual beli barang bekas layak pakai
+                yang membantu pengguna melakukan transaksi dengan mudah.
+              </p>
+              <div class="tags">
+                <span>UI/UX</span><span>HTML</span><span>CSS</span>
+              </div>
+              <a href="#contact" class="project-link">
+                Diskusikan Proyek <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1000&q=85"
+                alt="Desain antarmuka digital"
+                loading="lazy">
+              <span class="project-number">PROJECT 02</span>
+            </div>
+            <div class="project-content">
+              <h3>Mobile App Design</h3>
+              <p>
+                Perancangan antarmuka aplikasi dengan fokus pada
+                pengalaman pengguna, navigasi, dan konsistensi visual.
+              </p>
+              <div class="tags">
+                <span>Figma</span><span>Wireframe</span><span>UI/UX</span>
+              </div>
+              <a href="#contact" class="project-link">
+                Diskusikan Proyek <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=85"
+                alt="Kolaborasi dan teknologi digital"
+                loading="lazy">
+              <span class="project-number">PROJECT 03</span>
+            </div>
+            <div class="project-content">
+              <h3>Website Profil Desa</h3>
+              <p>
+                Konsep website informasi desa untuk menyajikan profil,
+                berita, potensi wilayah, dan informasi layanan masyarakat.
+              </p>
+              <div class="tags">
+                <span>WordPress</span><span>Web Design</span><span>CMS</span>
+              </div>
+              <a href="#contact" class="project-link">
+                Diskusikan Proyek <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-image">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=85"
+                alt="Visualisasi data dan dashboard"
+                loading="lazy">
+              <span class="project-number">PROJECT 04</span>
+            </div>
+            <div class="project-content">
+              <h3>Dashboard Informasi</h3>
+              <p>
+                Konsep dashboard untuk menyajikan data dan ringkasan
+                informasi melalui komponen visual yang terstruktur.
+              </p>
+              <div class="tags">
+                <span>Dashboard</span><span>JavaScript</span><span>UI</span>
+              </div>
+              <a href="#contact" class="project-link">
+                Diskusikan Proyek <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section experience-section" id="experience">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div class="section-label">04 — My Journey</div>
+          <h2 class="section-title">
+            Perjalanan <span class="gold">Saya</span>
+          </h2>
+          <p class="section-desc">
+            Perjalanan belajar, mengembangkan keterampilan,
+            dan membangun pengalaman di bidang teknologi.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <small>SAAT INI</small>
+            <h3>Mahasiswa Teknologi Informasi</h3>
+            <p>
+              Mempelajari pemrograman, basis data, analisis sistem,
+              dan pengembangan aplikasi sebagai bekal membangun
+              solusi digital.
+            </p>
+          </article>
+
+          <article class="timeline-item reveal">
+            <small>TAHAP PENGEMBANGAN</small>
+            <h3>Web Development & UI/UX</h3>
+            <p>
+              Mengembangkan proyek latihan website, menyusun
+              wireframe, mempelajari desain responsif, dan
+              meningkatkan kemampuan implementasi antarmuka.
+            </p>
+          </article>
+
+          <article class="timeline-item reveal">
+            <small>LANGKAH SELANJUTNYA</small>
+            <h3>Professional Growth</h3>
+            <p>
+              Menargetkan pengembangan proyek yang lebih kompleks,
+              kolaborasi tim, serta pengalaman profesional
+              di bidang teknologi informasi.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info reveal">
+          <div class="section-label">05 — Get In Touch</div>
+          <h2 class="section-title">
+            Mari Ciptakan Sesuatu yang <span class="gold">Hebat.</span>
+          </h2>
+
+          <p>
+            Punya ide proyek, ingin berkolaborasi, atau sekadar
+            berdiskusi tentang teknologi? Silakan hubungi saya
+            melalui informasi kontak berikut.
+          </p>
+
+          <div class="contact-item">
+            <i class="fa-regular fa-envelope"></i>
+            <div>
+              <small>Email</small>
+              <strong>emailkamu@example.com</strong>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fa-brands fa-whatsapp"></i>
+            <div>
+              <small>WhatsApp</small>
+              <strong>+62 812-0000-0000</strong>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <small>Lokasi</small>
+              <strong>Kota Kamu, Indonesia</strong>
+            </div>
+          </div>
+
+          <div class="socials">
+            <!-- Ganti # dengan URL profil media sosial kamu -->
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-group">
+            <label for="name">Nama Lengkap</label>
+            <input id="name" name="name" type="text"
+              placeholder="Masukkan nama kamu" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Alamat Email</label>
+            <input id="email" name="email" type="email"
+              placeholder="nama@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subjek</label>
+            <input id="subject" name="subject" type="text"
+              placeholder="Tentang apa pesan kamu?" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Pesan</label>
+            <textarea id="message" name="message"
+              placeholder="Tuliskan pesan kamu di sini..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-regular fa-paper-plane"></i>
+            Kirim Pesan via Email
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Nama Kamu.
+      Crafted with care & <span>creativity.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Tahun otomatis
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Navigasi mobile
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.innerHTML = isOpen
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    // Tutup menu setelah tautan dipilih
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      });
+    });
+
+    // Animasi saat elemen terlihat di layar
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach(element => observer.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add("visible"));
+    }
+
+    // Formulir membuka aplikasi email pengguna
+    document.getElementById("contactForm").addEventListener("submit", event => {
+      event.preventDefault();
+
+      const form = event.currentTarget;
+      if (!form.reportValidity()) return;
+
+      // GANTI dengan alamat email tujuan yang benar
+      const recipient = "emailkamu@example.com";
+
+      if (recipient === "emailkamu@example.com") {
+        alert("Silakan ganti emailkamu@example.com pada kode JavaScript dengan alamat email tujuan kamu.");
+        return;
+      }
+
+      const data = new FormData(form);
+      const subject = data.get("subject");
+      const body =
+        "Nama: " + data.get("name") + "\n" +
+        "Email: " + data.get("email") + "\n\n" +
+        "Pesan:\n" + data.get("message");
+
+      const mailto = "mailto:" + recipient +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>
